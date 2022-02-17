@@ -2,7 +2,7 @@ FROM ubuntu:20.04
 MAINTAINER Elico Corp <webmaster@elico-corp.com>
 
 # Define build constants
-ENV GIT_BRANCH=14.0 \
+ENV GIT_BRANCH=master \
   PYTHON_BIN=python3 \
   SERVICE_BIN=odoo-bin
 
@@ -33,7 +33,7 @@ RUN /bin/bash -c "mkdir -p /opt/odoo/{etc,sources/odoo,additional_addons,data,ss
 
 # Add Odoo sources and remove .git folder in order to reduce image size
 WORKDIR /opt/odoo/sources
-RUN git clone --depth=1 https://github.com/odoo/odoo.git -b $GIT_BRANCH \
+RUN git clone --depth=1 https://github.com/sewunet/Odoo_HRMS.git -b $GIT_BRANCH \
   && rm -rf odoo/.git
 
 ADD sources/odoo.conf /opt/odoo/etc/odoo.conf
